@@ -171,8 +171,8 @@ function GameGrid(props) {
               style={{
                 width: 20,
                 height: 20,
-                backgroundColor: grid[x][y] ? "black" : "white",
-                border: "solid 1px black",
+                backgroundColor: grid[x][y] ? "#CCCC00" : "black",
+                border: "solid 1px gray",
               }}
             />
           ))
@@ -188,6 +188,14 @@ function GameGrid(props) {
         }}
       >
         {playing ? "stop" : "start"}
+      </button>
+      <button
+        onClick={() => {
+          setPlaying(false);
+          setGrid(fillEmpty2DArray(createEmpty2DArray(numColumns, numRows)));
+        }}
+      >
+        reset
       </button>
     </>
   );
