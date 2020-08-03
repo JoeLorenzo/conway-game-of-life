@@ -211,7 +211,7 @@ function GameGrid(props) {
       className="main-container"
     >
       <Grid container direction="row">
-        <Grid item lg={10}>
+        <Grid item lg={9}>
           <div
             style={{
               display: "grid",
@@ -242,7 +242,7 @@ function GameGrid(props) {
             )}
           </div>
         </Grid>
-        <Grid item lg={2}>
+        <Grid item lg={3}>
           <Grid container direction="column">
             <div className={classes.gameText}>Generation : {generation}</div>
             <Button

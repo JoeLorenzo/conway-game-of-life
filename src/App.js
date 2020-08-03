@@ -1,5 +1,5 @@
 import React from "react";
-// import "./App.css";
+import "./App.css";
 import GlobalStyles from "./theme/GlobalStyles";
 import GameGrid from "./components/GameGrid";
 import CssBaseline from "@material-ui/core/CssBaseline";

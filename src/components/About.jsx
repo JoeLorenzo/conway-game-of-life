@@ -1,10 +1,10 @@
 import React from "react";
-import { Grid, makeStyles, Typography } from "@material-ui/core/";
+import { Grid, Typography } from "@material-ui/core/";
 
-const useStyles = makeStyles((theme) => ({}));
+// const useStyles = makeStyles((theme) => ({}));
 
 const About = (props) => {
-  const classes = useStyles();
+  // const classes = useStyles();
 
   return (
     <Grid item component="main" className="item-container">

@@ -1,8 +1,6 @@
 import React from "react";
 import {
-  useMediaQuery,
   makeStyles,
-  useTheme,
   AppBar,
   Toolbar,
   Typography,
@@ -22,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
 const Header = (props) => {
   //material ui hooks
   const classes = useStyles();
-  const theme = useTheme();
+  // const theme = useTheme();
   // const matches = useMediaQuery(theme.breakpoints.down("md"));
 
   return (
