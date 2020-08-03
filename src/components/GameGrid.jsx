@@ -1,6 +1,7 @@
 import React, { useState, useCallback, useRef } from "react";
 import { Grid, makeStyles, Button } from "@material-ui/core";
 import gliderGun from "../presets/gliderGun";
+
 const numRows = 50;
 const numColumns = 50;
 
