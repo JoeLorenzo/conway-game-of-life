@@ -1,5 +1,8 @@
 Conway's Game of Life
 
+## Deployed URL
+https://main.d2n320kavy8voh.amplifyapp.com/
+
 ## Available Scripts
 
 In the project directory, you can run:
