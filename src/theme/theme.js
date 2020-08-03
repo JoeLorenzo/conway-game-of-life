@@ -98,7 +98,7 @@ const theme = createMuiTheme({
   },
   palette: {
     common: {
-      white: `${background}`,
+      white: `${white}`,
       black: `${black}`,
       header: `${header}`,
     },
