@@ -281,6 +281,8 @@ function GameGrid(props) {
               color="primary"
               className={classes.button}
               onClick={() => {
+                setPlaying(false);
+                setGeneration(0);
                 setGrid(createRandomGrid(numColumns, numRows));
               }}
             >
@@ -303,6 +305,8 @@ function GameGrid(props) {
               color="primary"
               className={classes.button}
               onClick={() => {
+                setPlaying(false);
+                setGeneration(0);
                 setGrid(gliderGun);
               }}
             >
