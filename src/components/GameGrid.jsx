@@ -127,8 +127,26 @@ const gameLogic = (grid) => {
   return gridCopy;
 };
 
+const createRandomGrid = (numColumns, numRows) => {
+  let randomGrid = createEmpty2DArray(numColumns, numRows);
+  for (let x = 0; x < columnLength(randomGrid); x++) {
+    for (let y = 0; y < rowLength(randomGrid); y++) {
+      let randomValue = Math.random();
+      if (randomValue > 0.7) {
+        randomGrid[x][y] = true;
+      } else {
+        randomGrid[x][y] = false;
+      }
+    }
+  }
+  return randomGrid;
+};
+
+// Math.random() > 0.7 ? 1 : 0
+
 function GameGrid(props) {
   const [playing, setPlaying] = useState(false);
+  const [generation, setGeneration] = useState(0);
   const [grid, setGrid] = useState(() => {
     // this will first create an empty 2D array using a helper function
     // next it will fill the empty array with false boleans using
@@ -136,14 +154,18 @@ function GameGrid(props) {
     return fillEmpty2DArray(createEmpty2DArray(numColumns, numRows));
   });
 
+  console.log(createRandomGrid(3, 3));
   const playingRef = useRef();
+  const generationRef = useRef();
+
   playingRef.current = playing;
+  generationRef.current = generation;
   const nextGeneration = useCallback(() => {
     // a recursive function that runs the simulation
     if (!playingRef.current) {
       return;
     }
-
+    setGeneration(generationRef.current + 1);
     setGrid((grid) => {
       return gameLogic(grid);
     });
@@ -192,11 +214,20 @@ function GameGrid(props) {
       <button
         onClick={() => {
           setPlaying(false);
+          setGeneration(0);
           setGrid(fillEmpty2DArray(createEmpty2DArray(numColumns, numRows)));
         }}
       >
         reset
       </button>
+      <button
+        onClick={() => {
+          setGrid(createRandomGrid(numColumns, numRows));
+        }}
+      >
+        random
+      </button>
+      <button>{generation}</button>
     </>
   );
 }
