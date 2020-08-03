@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useRef } from "react";
-import "../App.css";
+// import "../App.css";
 const numRows = 40;
 const numColumns = 40;
 
@@ -154,12 +154,23 @@ function GameGrid(props) {
     return fillEmpty2DArray(createEmpty2DArray(numColumns, numRows));
   });
 
-  console.log(createRandomGrid(3, 3));
   const playingRef = useRef();
   const generationRef = useRef();
 
   playingRef.current = playing;
   generationRef.current = generation;
+  const runSimulation = useCallback(() => {
+    // a recursive function that runs the simulation
+    if (!playingRef.current) {
+      return;
+    }
+    setGeneration(generationRef.current + 1);
+    setGrid((grid) => {
+      return gameLogic(grid);
+    });
+    setTimeout(runSimulation, 100);
+  }, []);
+
   const nextGeneration = useCallback(() => {
     // a recursive function that runs the simulation
     if (!playingRef.current) {
@@ -169,7 +180,7 @@ function GameGrid(props) {
     setGrid((grid) => {
       return gameLogic(grid);
     });
-    setTimeout(nextGeneration, 100);
+    // setPlaying(false)
   }, []);
   return (
     <>
@@ -205,7 +216,7 @@ function GameGrid(props) {
           setPlaying(!playing);
           if (!playing) {
             playingRef.current = true;
-            nextGeneration();
+            runSimulation();
           }
         }}
       >
@@ -228,6 +239,14 @@ function GameGrid(props) {
         random
       </button>
       <button>{generation}</button>
+      <button
+        onClick={() => {
+          playingRef.current = true;
+          nextGeneration();
+        }}
+      >
+        next
+      </button>
     </>
   );
 }
